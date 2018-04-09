@@ -193,6 +193,6 @@ case ${OSTYPE} in
       . $ZDOTDIR/.zshrc.mac
       ;;
   linux*)                       # Ubuntu
-      # TODO
+      . $ZDOTDIR/.zshrc.linux
       ;;
 esac
