@@ -1,4 +1,9 @@
-# ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+# en
+export LC_ALL='en_US.UTF-8'
+export LANG='en_US.UTF-8'
+
+
+# ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 # alias
 
 alias grep='grep --color'
@@ -12,22 +17,8 @@ if type colordiff &> /dev/null; then
     alias diff='colordiff -u'
 fi
 
-# Not using
-alias CravingExplorer='wine "~/.wine/drive_c/Program Files/CravingExplorer/CravingExplorer.exe" &'
 
-## setting LS_COLORS for "gls" (ls of GNU version)
-## For Mac
-## (installed with brew as "coreutils")
-## use "gls" instead of "ls"
-eval $(gdircolors ~/Documents/iTerm/dircolors-solarized/dircolors.ansi-universal)
-# -A は -a の亜種
-alias ls='gls --color=auto -AF'
-# -G で色付きになる
-# alias ls='ls -a -G'
-
-# ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-# Following settings are based on this site:
-# https://gist.github.com/mollifier/4979906
+# ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 # echo 等でも色を使用出来るようにする
 # via: http://qiita.com/mollifier/items/40d57e1da1b325903659
@@ -39,19 +30,6 @@ bindkey -e
 
 ## Redo ??
 # bindkey "" redo
-
-## Prompt
-## %n : user
-## %m : host
-## %~ : path of current directory
-## %F{color} : change color
-## %f : reset color ??
-## preferable colors: green, magenta
-PROMPT="%F{magenta}%n%f@%F{yellow}%m%f %~
-%# "
-# PROMPT="%F{magenta}%n%f@%F{yellow}%m%f [%D{%m/%d %H:%M}] %~
-# %# "
-
 
 ## history
 HISTFILE=~/.zsh_history
@@ -67,7 +45,7 @@ zstyle ':zle:*' word-chars " /=-_;@:{},|"
 zstyle ':zle:*' word-style unspecified
 
 
-# ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+# ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 # Completion
 
 # zsh-completions: (brew install)
@@ -95,11 +73,6 @@ zstyle ':completion:*' ignore-parents parent pwd ..
 # ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
-# LS_COLORS を補完に対応させる
-# via: http://qiita.com/yuyuchu3333/items/84fa4e051c3325098be3
-if [ -n "$LS_COLORS" ]; then
-    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-fi
 
 # auto rehash
 zstyle ':completion:*' rehash true
@@ -107,10 +80,22 @@ zstyle ':completion:*' rehash true
 # 補完を詰めて表示
 # setopt list_packed
 
-# ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-# vcs_info
-# version control system (git)
-# show Git status on (right) prompt
+# ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+## Prompt
+## %n : user
+## %m : host
+## %~ : path of current directory
+PROMPT="%F{magenta}%n%f@%F{yellow}%m%f %~
+%# "
+# PROMPT="%F{magenta}%n%f@%F{yellow}%m%f [%D{%m/%d %H:%M}] %~
+# %# "
+
+## %F{color} : change color
+## %f : reset color ??
+## preferable colors: green, magenta
+
+## VCS or Git
+# show status on right prompt
 
 autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
@@ -125,13 +110,12 @@ function _update_vcs_info_msg() {
 add-zsh-hook precmd _update_vcs_info_msg
 
 
-# ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+# ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 # options
 # 日本語ファイル名を表示可能にする
 # setopt print_eight_bit
 
 setopt no_beep
-# setopt no_flow_control
 # C-s が効かないのを、修正する。
 # via: http://www.softantenna.com/wp/unix/zsh-history-search/
 setopt no_flow_control
@@ -143,7 +127,7 @@ setopt interactive_comments
 # setopt auto_cd
 
 # automatically pushd, after cd
-# cd の履歴: "cd -" のあとに [TAB]
+# cd history by "cd -[TAB]"
 setopt auto_pushd
 # 重複したディレクトリを追加しない
 setopt pushd_ignore_dups
@@ -168,7 +152,7 @@ setopt hist_reduce_blanks
 # via: http://superuser.com/questions/402989/how-do-i-get-zshs-autocomplete-to-complete-wildcards-like-bash-does
 setopt glob_complete
 
-# ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+# ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 # keybind
 
 # ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする？
@@ -184,7 +168,7 @@ bindkey "^S" history-incremental-search-forward
 # で racket が出ない！
 
 
-# ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+# ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 # others
 
 # delete odd escape sequence in tex shell (?)
@@ -194,6 +178,21 @@ if [ -n "$INSIDE_EMACS" ]; then
     unset zle_bracketed_paste  # This line
 fi
 
-# opam settings
-# completion とか
-. ~/.opam/opam-init/init.zsh
+
+## opam switch
+eval `opam config env`
+## OPAM configuration
+. ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+## cabal
+export PATH=$PATH:~/.cabal/bin
+
+
+case ${OSTYPE} in
+  darwin*)                      # mac
+      . $ZDOTDIR/.zshrc.mac
+      ;;
+  linux*)                       # Ubuntu
+      # TODO
+      ;;
+esac
