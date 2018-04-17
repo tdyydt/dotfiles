@@ -1,0 +1,20 @@
+# reattach-to-user-namespace
+# TODO: check if it is installed
+
+# open が効かなかったりするのを解消
+# via: https://www.elmund.io/osx/2015/07/10/open-command-in-osx-tmux/
+set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
+
+
+# Setup 'v' to begin selection as in Vim
+bind-key -T copy-mode-vi v send-keys -X copy-pipe "reattach-to-user-namespace pbcopy"
+bind-key -T copy-mode-vi y send-keys -X copy-pipe "reattach-to-user-namespace pbcopy"
+
+# Update default binding of `Enter` to also use copy-pipe
+unbind -T copy-mode-vi Enter
+bind-key -T copy-mode-vi Enter send-keys -X copy-pipe "reattach-to-user-namespace pbcopy"
+
+# tmux list-keys -t copy-mode-vi
+# を見ると、ドラッグでコピー出来る仕組みが分かる
+# copy-selection と書かれている key を上書きしたら良い
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe "reattach-to-user-namespace pbcopy"
