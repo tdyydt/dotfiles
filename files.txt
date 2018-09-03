@@ -1,3 +1,5 @@
 .tmux.conf
 .zshenv
 .vimrc
+.gitconfig
+.gitignore_global
