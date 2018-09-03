@@ -3,3 +3,4 @@
 .vimrc
 .gitconfig
 .gitignore_global
+.latexmkrc
