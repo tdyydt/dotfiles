@@ -10,12 +10,24 @@ alias grep='grep --color'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
+alias ll='ls -l'
 
 # use colordiff as diff, if exists
 # via: http://stackoverflow.com/questions/7522712/how-to-check-if-command-exists-in-a-shell-script
 if type colordiff &> /dev/null; then
     alias diff='colordiff -u'
 fi
+
+# if rlwrap exists, ...
+if type rlwrap > /dev/null; then
+    alias ocaml='rlwrap ocaml'
+    alias maxima='rlwrap maxima'
+fi
+
+# C++
+# cc, gpp, cpp, cxx
+alias gpp='g++ -std=c++14 -Wall'
+alias kuIntroProgRun='javac -cp ../objectdrawV1.1.2ku.jar:. Main.java && java -cp ../objectdrawV1.1.2ku.jar:. Main'
 
 
 # ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -127,7 +139,7 @@ setopt interactive_comments
 # setopt auto_cd
 
 # automatically pushd, after cd
-# cd history by "cd -[TAB]"
+# View history: cd - [TAB], dirs -v
 setopt auto_pushd
 # 重複したディレクトリを追加しない
 setopt pushd_ignore_dups
@@ -187,6 +199,8 @@ eval `opam config env`
 ## cabal
 export PATH=$PATH:~/.cabal/bin
 
+## rbenv
+eval "$(rbenv init -)"
 
 case ${OSTYPE} in
   darwin*)                      # mac
