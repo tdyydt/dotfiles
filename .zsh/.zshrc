@@ -27,8 +27,6 @@ fi
 # C++
 # cc, gpp, cpp, cxx
 alias gpp='g++ -std=c++14 -Wall'
-alias kuIntroProgRun='javac -cp ../objectdrawV1.1.2ku.jar:. Main.java && java -cp ../objectdrawV1.1.2ku.jar:. Main'
-
 
 # ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -64,8 +62,7 @@ zstyle ':zle:*' word-style unspecified
 # additional completion definitions for zsh
 # e.g.) sub-commands of git, ...
 
-# Note: '/usr/local/share/zsh/site-functions'
-# はデフォルトで $fpath にあった。
+# Note: '/usr/local/share/zsh/site-functions' was in $fpath, by default
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # activate completion
@@ -76,17 +73,18 @@ compinit -u
 
 # ignore case in completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-# ../ の後は今いるディレクトリを補完しない
-# TODO: seems not working
+# ../ の後は今いるディレクトリを補完しない (seems not working??)
 zstyle ':completion:*' ignore-parents parent pwd ..
+
 # sudo の後ろでコマンド名を補完する
 # zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
 #                    /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+
 # ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
-
 # auto rehash
+# (e.g. when installing a command in another window.)
 zstyle ':completion:*' rehash true
 
 # 補完を詰めて表示
@@ -135,28 +133,28 @@ setopt no_flow_control
 setopt ignore_eof               # do not exit with C-d
 setopt interactive_comments
 
-# ディレクトリ名だけで cd
+# change dir only with directory name (without cd)
 # setopt auto_cd
 
 # automatically pushd, after cd
 # View history: cd - [TAB], dirs -v
 setopt auto_pushd
-# 重複したディレクトリを追加しない
+# don't push duplicate directories
 setopt pushd_ignore_dups
 
 # コマンド名を間違えた時に、近い名前のコマンドを教えてくれる。
 # setopt correct
 
-# 同時に起動した zsh の間で history を共有する
+# share history, among the shells working simultaneously
 setopt share_history
-# 同じコマンドを history に残さない
+# don't add same commands in history
 setopt hist_ignore_all_dups
-# スペースから始まるコマンド行は history に残さない
+# don't add commands beginning with space character, in history
 setopt hist_ignore_space
-# ヒストリに保存するときに余分なスペースを削除する
+# reduce redundant whitespaces when adding to history
 setopt hist_reduce_blanks
 
-# 高機能なワイルドカード展開を使用する
+# Use rich wildcard features ??
 # setopt extended_glob
 
 # ワイルドカード展開時に、いっぺんに全て展開しない
@@ -174,11 +172,7 @@ bindkey "^S" history-incremental-search-forward
 # sudo の後のコマンドでエイリアスを有効にする ?
 # alias sudo='sudo '
 
-# TODO:
-# rlwrap の次にコマンド補完を有効にして欲しい！
-# rlwrap rack [TAB]
-# で racket が出ない！
-
+# TODO: rlwrap の次にコマンド補完を有効にできる？
 
 # ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 # others
