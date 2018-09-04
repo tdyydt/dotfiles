@@ -1,19 +1,19 @@
 [include]
-    path = ~/.gitconfig.local
+        path = ~/.gitconfig.local
 
 [core]
         editor = emacsclient
-	excludesfile = ~/.gitignore_global
+        excludesfile = ~/.gitignore_global
 
 [merge]
-	ff = false
+        ff = false
 
 [pull]
-	ff = only
+        ff = only
 
 [alias]
-	st = status -sb
-	cm = commit
+        st = status -sb
+        cm = commit
         # lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative
         lg = log --graph --pretty=format:'%C(auto)%h%Creset %Cgreen(%cd)%Creset -%C(auto)%d%Creset %s' --abbrev-commit --date=relative
         #--date=format:'%Y/%m/%d %H:%M:%S' #--date=short
