@@ -1,14 +1,9 @@
 # Homebrew
 export PATH=PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-
-# ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-# alias
-# gls by brew install coreutils
+# gls (brew install coreutils)
 alias ls='gls --color=auto -AF'
 
-# Load color theme for gls
-# LS_COLORS が設定される
 # Set LS_COLORS for gls
 eval $(gdircolors ~/Documents/iTerm/dircolors-solarized/dircolors.ansi-universal)
 
@@ -18,8 +13,3 @@ eval $(gdircolors ~/Documents/iTerm/dircolors-solarized/dircolors.ansi-universal
 if [ -n "$LS_COLORS" ]; then
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
-
-
-# Not using
-# Craving Explorer by Wine
-alias CravingExplorer='wine "~/.wine/drive_c/Program Files/CravingExplorer/CravingExplorer.exe" &'

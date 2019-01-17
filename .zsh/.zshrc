@@ -1,4 +1,4 @@
-## options etc.
+# configurations not written in .zshenv
 
 # Emacs-like keybinds
 bindkey -e
@@ -36,14 +36,16 @@ setopt auto_pushd
 # don't push duplicate directories
 setopt pushd_ignore_dups
 
+
 ## -- expand
 
-# Use rich wildcard features ??
+# Use rich wildcard features (?)
 # setopt extended_glob
 
 # ワイルドカード展開時に、いっぺんに全て展開しない (1つずつ提案させる)
 # via: http://superuser.com/questions/402989/how-do-i-get-zshs-autocomplete-to-complete-wildcards-like-bash-does
 setopt glob_complete
+
 
 ## -- 単語区切り
 
@@ -64,18 +66,8 @@ if [ -n "$INSIDE_EMACS" ]; then
 fi
 
 
-## opam switch
-eval `opam config env`
-## OPAM configuration
-. ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+## --- Load files ---
 
-## cabal
-export PATH=$PATH:~/.cabal/bin
-
-## rbenv
-eval "$(rbenv init -)"
-
-## -- Load files
 . $ZDOTDIR/alias.zsh
 . $ZDOTDIR/completion.zsh
 . $ZDOTDIR/history.zsh
@@ -83,9 +75,9 @@ eval "$(rbenv init -)"
 
 case ${OSTYPE} in
   darwin*)                      # mac
-      . $ZDOTDIR/.zshrc.mac
+      . $ZDOTDIR/darwin.zsh
       ;;
   linux*)                       # Ubuntu
-      . $ZDOTDIR/.zshrc.linux
+      . $ZDOTDIR/linux.zsh
       ;;
 esac
