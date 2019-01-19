@@ -12,8 +12,13 @@ git clone git@github.com:tdyydt/dotfiles.git .dotfiles
 Link files:
 
 ```
-cd .dotfiles
-./link_files
+./link_files.sh
+```
+
+Unlink files:
+
+```
+./unlink_files.sh
 ```
 
 ## Notes
