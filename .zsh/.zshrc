@@ -1,28 +1,21 @@
 # configurations not written in .zshenv
 
-# Emacs-like keybinds
-bindkey -e
-# do not exit with C-d
-setopt ignore_eof
-
+bindkey -e                      # Emacs-like keybinds
+setopt ignore_eof               # Do not exit with C-d
 setopt no_beep
-
-# C-s が効かないのを修正
-# via: http://www.softantenna.com/wp/unix/zsh-history-search/
-setopt no_flow_control
-
 setopt interactive_comments
 
 # コマンド名を間違えた時に、近い名前のコマンドを教えてくれる。
 # setopt correct
 
-# 日本語ファイル名を表示可能にする
-# setopt print_eight_bit
-
 # echo 等でも色を使用 (?)
 # via: http://qiita.com/mollifier/items/40d57e1da1b325903659
 autoload -Uz colors
 colors
+
+# C-s が効かないのを修正
+# via: http://www.softantenna.com/wp/unix/zsh-history-search/
+setopt no_flow_control
 
 # change dir only with directory name (without cd)
 # setopt auto_cd
@@ -39,13 +32,12 @@ setopt pushd_ignore_dups
 
 ## -- expand
 
-# Use rich wildcard features (?)
-# setopt extended_glob
-
 # ワイルドカード展開時に、いっぺんに全て展開しない (1つずつ提案させる)
 # via: http://superuser.com/questions/402989/how-do-i-get-zshs-autocomplete-to-complete-wildcards-like-bash-does
 setopt glob_complete
 
+# Use rich wildcard features (?)
+# setopt extended_glob
 
 ## -- 単語区切り
 
@@ -75,7 +67,7 @@ fi
 
 case ${OSTYPE} in
   darwin*)                      # mac
-      . $ZDOTDIR/darwin.zsh
+      . $ZDOTDIR/mac.zsh
       ;;
   linux*)                       # Ubuntu
       . $ZDOTDIR/linux.zsh

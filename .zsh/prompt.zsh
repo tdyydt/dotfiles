@@ -1,18 +1,18 @@
-## Prompt
-## %n : user
-## %m : host
-## %~ : path of current directory
+## -- Prompt
+
 PROMPT="%F{magenta}%n%f@%F{yellow}%m%f %~
 %# "
 # PROMPT="%F{magenta}%n%f@%F{yellow}%m%f [%D{%m/%d %H:%M}] %~
 # %# "
 
+## %n : user
+## %m : host
+## %~ : path of current directory
 ## %F{color} : change color
 ## %f : reset color ??
-## preferable colors: green, magenta
+## Preferable colors: green, magenta
 
-## VCS (Git)
-# show status on right prompt
+## -- Show VCS status on right prompt
 
 autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
