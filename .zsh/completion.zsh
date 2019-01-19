@@ -29,3 +29,6 @@ zstyle ':completion:*' rehash true
 
 # 補完を詰めて表示
 # setopt list_packed
+
+# ディレクトリ選択時、最後の/を残す
+setopt noautoremoveslash

@@ -1,6 +1,3 @@
-# Homebrew
-export PATH=PATH=/usr/local/bin:/usr/local/sbin:$PATH
-
 # gls (brew install coreutils)
 alias ls='gls --color=auto -AF'
 

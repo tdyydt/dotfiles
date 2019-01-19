@@ -62,7 +62,7 @@ zstyle ':zle:*' word-style unspecified
 # via: https://github.com/syl20bnr/spacemacs/issues/3035
 if [ -n "$INSIDE_EMACS" ]; then
     #export EDITOR=emacsclient
-    unset zle_bracketed_paste  # This line
+    unset zle_bracketed_paste
 fi
 
 
