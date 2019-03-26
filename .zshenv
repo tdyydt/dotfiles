@@ -26,5 +26,9 @@ if type rbenv > /dev/null; then
     eval "$(rbenv init -)"
 fi
 
+# Go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+
 ## -- Load $ZDOTDIR/.zshrc
 export ZDOTDIR=$HOME/.dotfiles/.zsh
