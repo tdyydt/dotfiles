@@ -1,12 +1,13 @@
 # configurations not written in .zshenv
 
+# See `man zshoptions`
+# option names are case insensitive and underscores are ignored.
+# (I use lowercase and add moderate underscores)
+
 bindkey -e                      # Emacs-like keybinds
 setopt ignore_eof               # Do not exit with C-d
 setopt no_beep
 setopt interactive_comments
-
-# コマンド名を間違えた時に、近い名前のコマンドを教えてくれる。
-# setopt correct
 
 # echo 等でも色を使用 (?)
 # via: http://qiita.com/mollifier/items/40d57e1da1b325903659
@@ -20,6 +21,8 @@ setopt no_flow_control
 # change dir only with directory name (without cd)
 # setopt auto_cd
 
+# コマンド名を間違えた時に、近い名前のコマンドを教えてくれる。
+# setopt correct
 
 ## -- pushd
 
@@ -32,7 +35,7 @@ setopt pushd_ignore_dups
 
 ## -- expand
 
-# ワイルドカード展開時に、いっぺんに全て展開しない (1つずつ提案させる)
+# ワイルドカード展開時に、1つずつ提案させる (まとめて展開させない)
 # via: http://superuser.com/questions/402989/how-do-i-get-zshs-autocomplete-to-complete-wildcards-like-bash-does
 setopt glob_complete
 
@@ -40,7 +43,7 @@ setopt glob_complete
 # e.g. ^ for negation
 setopt extended_glob
 
-## -- 単語区切り
+## -- Word delimiters
 
 autoload -Uz select-word-style
 select-word-style default
@@ -49,7 +52,7 @@ zstyle ':zle:*' word-chars " /=-_;@:{},|"
 zstyle ':zle:*' word-style unspecified
 
 
-## -- emacs shell
+## -- For emacs shell
 
 # delete odd escape sequence inside emacs (e.g. tex shell)
 # via: https://github.com/syl20bnr/spacemacs/issues/3035
