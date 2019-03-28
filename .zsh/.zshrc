@@ -36,8 +36,9 @@ setopt pushd_ignore_dups
 # via: http://superuser.com/questions/402989/how-do-i-get-zshs-autocomplete-to-complete-wildcards-like-bash-does
 setopt glob_complete
 
-# Use rich wildcard features (?)
-# setopt extended_glob
+# Use rich wildcard features
+# e.g. ^ for negation
+setopt extended_glob
 
 ## -- 単語区切り
 
