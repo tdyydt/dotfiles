@@ -8,6 +8,9 @@
 [merge]
         ff = false
 
+[push]
+	default = simple
+
 [pull]
         ff = only
 
