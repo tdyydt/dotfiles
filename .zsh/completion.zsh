@@ -1,7 +1,7 @@
 # -- zsh-completions --
 # (brew install zsh-completions)
 # additional completion definitions for zsh
-# e.g.) sub-commands of git
+# e.g.) git sub-commands
 
 # Note: '/usr/local/share/zsh/site-functions' was in $fpath, by default
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -14,8 +14,8 @@ compinit -u
 
 # 補完リストを詰めて表示
 setopt list_packed
-# ディレクトリ選択時に最後の/を残す
-setopt no_auto_remove_slash
+# ディレクトリ選択時に最後の/を残す (しない; lnとか)
+# setopt no_auto_remove_slash
 
 # Ignore case in completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
