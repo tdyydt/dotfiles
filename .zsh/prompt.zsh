@@ -1,9 +1,11 @@
 ## -- Prompt
 
-PROMPT="%F{magenta}%n%f@%F{yellow}%m%f %~
-%# "
-# PROMPT="%F{magenta}%n%f@%F{yellow}%m%f [%D{%m/%d %H:%M}] %~
+## %D{%m/%d %H:%M}
+
+# PROMPT="%F{magenta}%n%f@%F{yellow}%m%f %~
 # %# "
+PROMPT="${fg_bold[magenta]}%n${reset_color}@${fg_bold[yellow]}%m${reset_color} %~
+%# "
 
 ## %n : user
 ## %m : host
