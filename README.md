@@ -14,3 +14,4 @@ Symbolic links:
 
 What you should do afterwards:
 * Set `user.name` and `user.email` in `~/.gitconfig.local`.
+* [Emacs configuration](https://github.com/tdyydt/emacs.d)
