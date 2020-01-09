@@ -13,6 +13,8 @@ fi
 
 # cabal
 export PATH=$PATH:~/.cabal/bin
+# stack
+export PATH=$PATH:~/.local/bin
 
 # opam
 if type opam > /dev/null; then
